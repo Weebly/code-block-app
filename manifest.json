@@ -1,0 +1,52 @@
+{
+	"manifest": "1",
+	"version": "1.0.0",
+	"elements": [
+		{
+			"name": "Code Block",
+			"path": "files",
+			"version": "1.0.0",
+			"settings": {
+				"config": {"autopop": false},
+				"properties": [
+					{
+						"name": "settings",
+						"label": "Settings",
+						"type": "group",
+						"properties": [
+							{
+								"name": "theme",
+								"label": "Theme",
+								"type": "select",
+								"default": "light",
+								"values": [
+									{"name": "Light", "value": "light"},
+									{"name": "Dark", "value": "dark"}
+								]
+							}, {
+								"name": "height",
+								"label": "Code Editor Height",
+								"type": "int",
+								"default": 400
+							}, {
+								"name": "code",
+								"label": "Code",
+								"type": "string",
+								"default": "/**\n *\tYour super awesome code!\n *\t:D\n */",
+								"hidden": true
+							}
+						]
+					}
+				]
+			},
+			"dependencies": {
+				"editor": {
+					"js": ["assets/codemirror.js"]
+				},
+				"publish": {
+					"js": ["assets/codemirror.js"]
+				}	
+			}
+		}
+	]
+}
