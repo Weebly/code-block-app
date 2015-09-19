@@ -1,7 +1,7 @@
 .code-editor {
 	margin: 10px 0;
 
-	&.light {
+	&--light {
 		@headerBackgroundColor: #F8F8F8;
 		@backgroundColor: #FFFFFF;
 		@borderColor: #C9CDCF;
@@ -12,7 +12,7 @@
 		.body-code();
 	}
 
-	&.dark {
+	&--dark {
 		@headerBackgroundColor: #666C70;
 		@backgroundColor: #363B3E;
 		@borderColor: #E0E1E2;

@@ -1,4 +1,4 @@
-<div class="code-editor {{style}}">
+<div class="code-editor--{{style}}">
 	<div class="header">
 		{title:text default="Code Editor"}
 	</div>

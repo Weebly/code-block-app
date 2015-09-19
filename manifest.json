@@ -1,12 +1,11 @@
 {
 	"manifest": "1",
-	"version": "1.0.0",
-	"client_id": "396865290",
+	"version": "1.1.0",
 	"elements": [
 		{
 			"name": "Code Block",
 			"path": "files",
-			"version": "1.0.0",
+			"version": "1.1.0",
 			"settings": {
 				"config": {"autopop": false},
 				"properties": [
@@ -157,11 +156,6 @@
 									{ "value":"django", "name":"Django"  }
 								]
 							}, 
-
-							// Setting that holds the code that
-							// was actually input into the editor.
-							// Will be hidden in the element
-							// settings dialog
 							{
 								"name": "code",
 								"label": "Code",
@@ -169,9 +163,6 @@
 								"default": "function helloWorld(str) {\n\tdocument.open();\n\tdocument.write(str);\n\tdocument.close();\n}\n\nhelloWorld('<h1>Hello, World!</h1>');",
 								"hidden": true
 							},
-
-							// Other element settings that will also be
-							// hidden in the element settings dialog
 							{
 								"name": "highlight_active_line",
 								"label": "highlight_active_line",
@@ -220,7 +211,7 @@
 								"type": "int",
 								"default": 1,
 								"hidden": true
-							},
+							}
 						]
 					}
 				]
