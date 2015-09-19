@@ -1,6 +1,7 @@
 {
 	"manifest": "1",
 	"version": "1.0.0",
+	"client_id": "396865290",
 	"elements": [
 		{
 			"name": "Code Block",
@@ -15,36 +16,225 @@
 						"type": "group",
 						"properties": [
 							{
-								"name": "theme",
-								"label": "Theme",
+								"name": "style",
+								"label": "Style",
 								"type": "select",
 								"default": "light",
 								"values": [
 									{"name": "Light", "value": "light"},
 									{"name": "Dark", "value": "dark"}
 								]
-							}, {
-								"name": "height",
-								"label": "Code Editor Height",
-								"type": "int",
-								"default": 400
-							}, {
+							},
+							{
+								"name": "syntax",
+								"label": "Set Syntax",
+								"type": "select",
+								"default": "javascript",
+								"values": [
+									{ "value":"abap", "name":"ABAP" },
+									{ "value":"abc", "name":"ABC" },
+									{ "value":"actionscript", "name":"ActionScript" },
+									{ "value":"ada", "name":"ADA" },
+									{ "value":"apache_conf", "name":"Apache Conf" },
+									{ "value":"asciidoc", "name":"AsciiDoc" },
+									{ "value":"assembly_x86", "name":"Assembly x86" },
+									{ "value":"autohotkey", "name":"AutoHotKey" },
+									{ "value":"batchfile", "name":"BatchFile" },
+									{ "value":"c_cpp", "name":"C and C++" },
+									{ "value":"c9search", "name":"C9Search" },
+									{ "value":"cirru", "name":"Cirru" },
+									{ "value":"clojure", "name":"Clojure" },
+									{ "value":"cobol", "name":"Cobol" },
+									{ "value":"coffee", "name":"CoffeeScript" },
+									{ "value":"coldfusion", "name":"ColdFusion" },
+									{ "value":"csharp", "name":"C#" },
+									{ "value":"css", "name":"CSS" },
+									{ "value":"curly", "name":"Curly" },
+									{ "value":"d", "name":"D" },
+									{ "value":"dart", "name":"Dart" },
+									{ "value":"diff", "name":"Diff" },
+									{ "value":"dockerfile", "name":"Dockerfile" },
+									{ "value":"dot", "name":"Dot" },
+									{ "value":"dummy", "name":"Dummy" },
+									{ "value":"dummysyntax", "name":"DummySyntax" },
+									{ "value":"eiffel", "name":"Eiffel" },
+									{ "value":"ejs", "name":"EJS" },
+									{ "value":"elixir", "name":"Elixir" },
+									{ "value":"elm", "name":"Elm" },
+									{ "value":"erlang", "name":"Erlang" },
+									{ "value":"forth", "name":"Forth" },
+									{ "value":"ftl", "name":"FreeMarker" },
+									{ "value":"gcode", "name":"Gcode" },
+									{ "value":"gherkin", "name":"Gherkin" },
+									{ "value":"gitignore", "name":"Gitignore" },
+									{ "value":"glsl", "name":"Glsl" },
+									{ "value":"golang", "name":"Go" },
+									{ "value":"groovy", "name":"Groovy" },
+									{ "value":"haml", "name":"HAML" },
+									{ "value":"handlebars", "name":"Handlebars" },
+									{ "value":"haskell", "name":"Haskell" },
+									{ "value":"haxe", "name":"haXe" },
+									{ "value":"html", "name":"HTML" },
+									{ "value":"html_ruby", "name":"HTML (Ruby)" },
+									{ "value":"ini", "name":"INI" },
+									{ "value":"io", "name":"Io" },
+									{ "value":"jack", "name":"Jack" },
+									{ "value":"jade", "name":"Jade" },
+									{ "value":"java", "name":"Java" },
+									{ "value":"javascript", "name":"JavaScript" },
+									{ "value":"json", "name":"JSON" },
+									{ "value":"jsoniq", "name":"JSONiq" },
+									{ "value":"jsp", "name":"JSP" },
+									{ "value":"jsx", "name":"JSX" },
+									{ "value":"julia", "name":"Julia" },
+									{ "value":"latex", "name":"LaTeX" },
+									{ "value":"lean", "name":"Lean" },
+									{ "value":"less", "name":"LESS" },
+									{ "value":"liquid", "name":"Liquid" },
+									{ "value":"lisp", "name":"Lisp" },
+									{ "value":"livescript", "name":"LiveScript" },
+									{ "value":"logiql", "name":"LogiQL" },
+									{ "value":"lsl", "name":"LSL" },
+									{ "value":"lua", "name":"Lua" },
+									{ "value":"luapage", "name":"LuaPage" },
+									{ "value":"lucene", "name":"Lucene" },
+									{ "value":"makefile", "name":"Makefile" },
+									{ "value":"markdown", "name":"Markdown" },
+									{ "value":"mask", "name":"Mask" },
+									{ "value":"matlab", "name":"MATLAB" },
+									{ "value":"maze", "name":"Maze" },
+									{ "value":"mel", "name":"MEL" },
+									{ "value":"mushcode", "name":"MUSHCode" },
+									{ "value":"mysql", "name":"MySQL" },
+									{ "value":"nix", "name":"Nix" },
+									{ "value":"objectivec", "name":"Objective-C" },
+									{ "value":"ocaml", "name":"OCaml" },
+									{ "value":"pascal", "name":"Pascal" },
+									{ "value":"perl", "name":"Perl" },
+									{ "value":"pgsql", "name":"pgSQL" },
+									{ "value":"php", "name":"PHP" },
+									{ "value":"powershell", "name":"Powershell" },
+									{ "value":"praat", "name":"Praat" },
+									{ "value":"prolog", "name":"Prolog" },
+									{ "value":"properties", "name":"Properties" },
+									{ "value":"protobuf", "name":"Protobuf" },
+									{ "value":"python", "name":"Python" },
+									{ "value":"r", "name":"R" },
+									{ "value":"rdoc", "name":"RDoc" },
+									{ "value":"rhtml", "name":"RHTML" },
+									{ "value":"ruby", "name":"Ruby" },
+									{ "value":"rust", "name":"Rust" },
+									{ "value":"sass", "name":"SASS" },
+									{ "value":"scad", "name":"SCAD" },
+									{ "value":"scala", "name":"Scala" },
+									{ "value":"scheme", "name":"Scheme" },
+									{ "value":"scss", "name":"SCSS" },
+									{ "value":"sh", "name":"SH" },
+									{ "value":"sjs", "name":"SJS" },
+									{ "value":"smarty", "name":"Smarty" },
+									{ "value":"snippets", "name":"snippets" },
+									{ "value":"soy_template", "name":"Soy Template" },
+									{ "value":"space", "name":"Space" },
+									{ "value":"sql", "name":"SQL" },
+									{ "value":"sqlserver", "name":"SQLServer" },
+									{ "value":"stylus", "name":"Stylus" },
+									{ "value":"svg", "name":"SVG" },
+									{ "value":"tcl", "name":"Tcl" },
+									{ "value":"tex", "name":"Tex" },
+									{ "value":"text", "name":"Text" },
+									{ "value":"textile", "name":"Textile" },
+									{ "value":"toml", "name":"Toml" },
+									{ "value":"twig", "name":"Twig" },
+									{ "value":"typescript", "name":"Typescript" },
+									{ "value":"vala", "name":"Vala" },
+									{ "value":"vbscript", "name":"VBScript" },
+									{ "value":"velocity", "name":"Velocity" },
+									{ "value":"verilog", "name":"Verilog" },
+									{ "value":"vhdl", "name":"VHDL" },
+									{ "value":"xml", "name":"XML" },
+									{ "value":"xquery", "name":"XQuery" },
+									{ "value":"yaml", "name":"YAML" },
+									{ "value":"django", "name":"Django"  }
+								]
+							}, 
+
+							// Setting that holds the code that
+							// was actually input into the editor.
+							// Will be hidden in the element
+							// settings dialog
+							{
 								"name": "code",
 								"label": "Code",
 								"type": "string",
-								"default": "/**\n *\tYour super awesome code!\n *\t:D\n */",
+								"default": "function helloWorld(str) {\n\tdocument.open();\n\tdocument.write(str);\n\tdocument.close();\n}\n\nhelloWorld('<h1>Hello, World!</h1>');",
 								"hidden": true
-							}
+							},
+
+							// Other element settings that will also be
+							// hidden in the element settings dialog
+							{
+								"name": "highlight_active_line",
+								"label": "highlight_active_line",
+								"type": "toggle",
+								"default": false,
+								"hidden": true
+							},
+							{
+								"name": "show_gutter",
+								"label": "show_gutter",
+								"type": "toggle",
+								"default": false,
+								"hidden": true
+							},
+							{
+								"name": "display_indent_guides",
+								"label": "display_indent_guides",
+								"type": "toggle",
+								"default": false,
+								"hidden": true
+							},
+							{
+								"name": "line_wrap",
+								"label": "line_wrap",
+								"type": "toggle",
+								"default": false,
+								"hidden": true
+							},
+							{
+								"name": "use_soft_tabs",
+								"label": "use_soft_tabs",
+								"type": "toggle",
+								"default": true,
+								"hidden": true
+							},
+							{
+								"name": "max_lines",
+								"label": "max_lines",
+								"type": "int",
+								"default": 30,
+								"hidden": true
+							},
+							{
+								"name": "min_lines",
+								"label": "min_lines",
+								"type": "int",
+								"default": 1,
+								"hidden": true
+							},
 						]
 					}
 				]
 			},
 			"dependencies": {
 				"editor": {
-					"js": ["assets/codemirror.js"]
+					"js": [
+						"assets/ace.js"
+					]
 				},
 				"publish": {
-					"js": ["assets/codemirror.js"]
+					"js": [
+						"assets/ace.js"
+					]
 				}	
 			}
 		}
