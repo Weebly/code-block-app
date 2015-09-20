@@ -3,52 +3,64 @@
  * @type {PlatformElement}
  */
 (function() {
-	var CodeEditor = PlatformElement.extend({
+	var CodeBlock = PlatformElement.extend({
 		/**
 		 * PlatformElement initialization. Code to setup the 
 		 * element should go here.
 		 */
 		initialize: function() {
+			this.theme = this.settings.get('style') == 'light' ? 'tomorrow' : 'tomorrow_night_eighties';
+
 			/**
-			 * Call to setup code editor
+			 * The script are not defined in the manifest 
+			 * so that 6mb of scripts are not laoded. This 
+			 * allows us to load only scripts needed for 
+			 * each language and theme.
 			 */
-			this.setUpEditor();
+			$.when(
+				$.getScript(this.assets_path + 'mode-' + this.settings.get('syntax') + '.js'),
+				$.getScript(this.assets_path + 'theme-' + this.theme + '.js')
+			).done(function() {
+				/**
+				 * After the scripts are loaded, we can
+				 * then make the call to setup the editor.
+				 */
+				this.setUpEditor();
+			}.bind(this));
 		},
 
 		/**
 		 * Function to setup the editor
 		 */
 		setUpEditor: function() {
-			var view = this;
+			this.editor = ace.edit(this.$el.find('.editor')[0]);
+			this.editor.setValue(this.settings.get('code'), -1);
 
-			/**
-			 * Finds `#code-block` within the element's DOM ($el) and replaces
-			 * it with a CodeMirror code editor.
-			 *
-			 * Editor is read-only when viewed on a published site.
-			 * 
-			 * NOTE: It is important to use `view.$el` when doing DOM manipulation
-			 * on your platform element so that other elements do not get
-			 * unintentionally modified.
-			 * 
-			 * @type {Object}
-			 */
-			view.editor = CodeMirror.fromTextArea(this.$el.find('.code-block')[0], {
-				lineNumbers: false,
-				readOnly: true
+			this.editor.setTheme('ace/theme/' + this.theme);
+			this.editor.getSession().setMode('ace/mode/' + this.settings.get('syntax'));
+			
+			this.editor.container.style.lineHeight = '26px';
+			this.editor.container.style.fontSize = '14px';
+			this.editor.renderer.setScrollMargin(20, 20);
+			
+			this.editor.setOptions({
+				'highlightActiveLine': this.settings.get('highlight_active_line'),
+				'readOnly': true
 			});
 
-			/**
-			 * Set editor's content
-			 */
-			view.editor.setValue(view.settings.get('code'));
+			this.editor.renderer.setOptions({
+				'showGutter': this.settings.get('show_gutter'),
+				'maxLines': this.settings.get('max_lines'),
+				'minLines': this.settings.get('min_lines'),
+				'displayIndentGuides': this.settings.get('display_indent_guides')
+			});
 
-			/**
-			 * Set max-height on the editor container
-			 */
-			view.$el.find('.CodeMirror-scroll').css('max-height', view.settings.get('height') + 'px');
+    		this.editor.session.setOptions({
+    			'wrap': this.settings.get('line_wrap'),
+    			'useSoftTabs': this.settings.get('use_soft_tabs')
+    		});
 		}
 	});
 
-	return CodeEditor;
+	return CodeBlock;
 })();

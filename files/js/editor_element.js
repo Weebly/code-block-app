@@ -3,82 +3,73 @@
  * @type {PlatformElement}
  */
 (function() {
-	var CodeEditor = PlatformElement.extend({
+	var CodeBlock = PlatformElement.extend({
 		/**
 		 * PlatformElement initialization. Code to setup the 
 		 * element should go here.
 		 */
 		initialize: function() {
+			this.theme = this.settings.get('style') == 'light' ? 'tomorrow' : 'tomorrow_night_eighties';
+
 			/**
-			 * Call to setup code editor
+			 * The script are not defined in the manifest 
+			 * so that 6mb of scripts are not laoded. This 
+			 * allows us to load only scripts needed for 
+			 * each language and theme.
 			 */
-			this.setUpEditor();
+			$.when(
+				$.getScript(this.assets_path + 'mode-' + this.settings.get('syntax') + '.js'),
+				$.getScript(this.assets_path + 'theme-' + this.theme + '.js')
+			).done(function() {
+				/**
+				 * After the scripts are loaded, we can
+				 * then make the call to setup the editor.
+				 */
+				this.setUpEditor();
+			}.bind(this));
 		},
 
 		/**
 		 * Function to setup the editor
 		 */
 		setUpEditor: function() {
-			var view = this;
+			this.editor = ace.edit(this.$el.find('.editor')[0]);
+			this.editor.setValue(this.settings.get('code'), -1);
 
-			/**
-			 * Finds `#code-block` within the element's DOM ($el) and replaces
-			 * it with a CodeMirror code editor.
-			 *
-			 * NOTE: It is important to use `view.$el` when doing DOM manipulation
-			 * on your platform element so that other elements do not get
-			 * unintentionally modified.
-			 * 
-			 * @type {Object}
-			 */
-			view.editor = CodeMirror.fromTextArea(view.$el.find('.code-block')[0], {
-				lineNumbers: false
-			});
-
-			/**
-			 * Add extra key bindings to the editor
-			 */
-			view.editor.setOption("extraKeys", {
-				/*
-				 * When Ctrl-S is pressed, the settings model is updated
-				 * with the contents of the editor and the model is then
-				 * saved to the server.
-				 */
-				'Ctrl-S': function() {
-					view.settings.set('code', view.editor.getValue());
-					view.settings.save();
-				}
-			});
-
-			/**
-			 * Set editor's content
-			 */
-			view.editor.setValue(view.settings.get('code'));
-
-			/**
-			 * On editor change, update settings.
-			 * @param {Event}
-			 * @param {Callback}
-			 */
-			view.editor.on('change', function(obj) {
-				view.settings.set('code', view.editor.getValue());
-			});
+			this.editor.setTheme('ace/theme/' + this.theme);
+			this.editor.getSession().setMode('ace/mode/' + this.settings.get('syntax'));
 			
-			/**
-			 * On editor blur, save settings changes.
-			 * @param {Event}
-			 * @param {Callback}
-			 */
-			view.editor.on('blur', function() {
-				view.settings.save();
+			this.editor.container.style.lineHeight = '26px';
+			this.editor.container.style.fontSize = '14px';
+			this.editor.renderer.setScrollMargin(20, 20);
+			
+			this.editor.setOptions({
+				'highlightActiveLine': this.settings.get('highlight_active_line'),
+				'readOnly': false
 			});
 
+			this.editor.renderer.setOptions({
+				'showGutter': this.settings.get('show_gutter'),
+				'maxLines': this.settings.get('max_lines'),
+				'minLines': this.settings.get('min_lines'),
+				'displayIndentGuides': this.settings.get('display_indent_guides')
+			});
+
+    		this.editor.session.setOptions({
+    			'wrap': this.settings.get('line_wrap'),
+    			'useSoftTabs': this.settings.get('use_soft_tabs')
+    		});
+
 			/**
-			 * Set max-height on the editor container
+			 * Save code on editor change event.
 			 */
-			view.$el.find('.CodeMirror-scroll').css('max-height', view.settings.get('height') + 'px');
+			this.editor.on('change', function(e) {
+				var value = this.editor.getValue();
+				this.settings.set('code', value);
+				this.settings.save();
+			}.bind(this));
 		}
 	});
 
-	return CodeEditor;
+	return CodeBlock;
 })();
