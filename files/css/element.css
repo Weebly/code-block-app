@@ -1,61 +1,61 @@
 .code-editor {
-	margin: 10px 0;
+    margin: 10px 0;
 
-	&--light {
-		@headerBackgroundColor: #F8F8F8;
-		@backgroundColor: #FFFFFF;
-		@borderColor: #C9CDCF;
-		@headerFontColor: #363B3E;
-		@codeFontColor: #666C70;
+    &--light {
+        @headerBackgroundColor: #F8F8F8;
+        @backgroundColor: #FFFFFF;
+        @borderColor: #C9CDCF;
+        @headerFontColor: #363B3E;
+        @codeFontColor: #666C70;
 
-		.header();
-		.body-code();
-	}
+        .header();
+        .body-code();
+    }
 
-	&--dark {
-		@headerBackgroundColor: #666C70;
-		@backgroundColor: #363B3E;
-		@borderColor: #E0E1E2;
-		@headerFontColor: #FFFFFF;
-		@codeFontColor: #F8F8F8;
-	
-		// Default theme background slightly different
-		// than that of the editor background.
-		.ace-tomorrow-night-eighties {
-			background-color: @backgroundColor;
-		}
+    &--dark {
+        @headerBackgroundColor: #666C70;
+        @backgroundColor: #363B3E;
+        @borderColor: #E0E1E2;
+        @headerFontColor: #FFFFFF;
+        @codeFontColor: #F8F8F8;
+    
+        // Default theme background slightly different
+        // than that of the editor background.
+        .ace-tomorrow-night-eighties {
+            background-color: @backgroundColor;
+        }
 
-		.header();
-		.body-code();
-	}
+        .header();
+        .body-code();
+    }
 
-	.header() {
-		.header {
-			padding: 20px;
-			font-weight: bold;
-			border: 1px solid @borderColor;
-			background-color: @headerBackgroundColor;
-			color: @headerFontColor;
+    .header() {
+        .header {
+            padding: 20px;
+            font-weight: bold;
+            border: 1px solid @borderColor;
+            background-color: @headerBackgroundColor;
+            color: @headerFontColor;
 
-			.paragraph {
-				margin: 0;
-			}
-		}
-	}
+            .paragraph {
+                margin: 0;
+            }
+        }
+    }
 
-	.body-code() {
-		.body-code {
-			margin: 0;
-			border-left: 1px solid @borderColor;
-			border-right: 1px solid @borderColor;
-			border-bottom: 1px solid @borderColor;
-			background-color: @backgroundColor;
-			color: @codeFontColor;
+    .body-code() {
+        .body-code {
+            margin: 0;
+            border-left: 1px solid @borderColor;
+            border-right: 1px solid @borderColor;
+            border-bottom: 1px solid @borderColor;
+            background-color: @backgroundColor;
+            color: @codeFontColor;
 
-			.editor {
-				margin: 0 20px;
-			}
-		}
-	}
+            .editor {
+                margin: 0 20px;
+            }
+        }
+    }
 
 }
