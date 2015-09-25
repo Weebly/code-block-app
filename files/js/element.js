@@ -38,11 +38,11 @@
 
 			this.editor.setTheme('ace/theme/' + this.theme);
 			this.editor.getSession().setMode('ace/mode/' + this.settings.get('syntax'));
-			
+
 			this.editor.container.style.lineHeight = '26px';
 			this.editor.container.style.fontSize = '14px';
 			this.editor.renderer.setScrollMargin(20, 20);
-			
+
 			this.editor.setOptions({
 				'highlightActiveLine': this.settings.get('highlight_active_line'),
 				'readOnly': true
@@ -55,10 +55,10 @@
 				'displayIndentGuides': this.settings.get('display_indent_guides')
 			});
 
-    		this.editor.session.setOptions({
-    			'wrap': this.settings.get('line_wrap'),
-    			'useSoftTabs': this.settings.get('use_soft_tabs')
-    		});
+			this.editor.session.setOptions({
+				'wrap': this.settings.get('line_wrap'),
+				'useSoftTabs': this.settings.get('use_soft_tabs')
+			});
 		}
 	});
 
