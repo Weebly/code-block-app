@@ -471,6 +471,10 @@
                     "name": "SVG"
                   },
                   {
+                    "value": "swift",
+                    "name": "Swift"
+                  },
+                  {
                     "value": "tcl",
                     "name": "Tcl"
                   },
