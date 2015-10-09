@@ -18,8 +18,8 @@
              * each language and theme.
              */
             $.when(
-                $.getScript(this.assets_path + 'mode-' + this.settings.get('syntax') + '.js'),
-                $.getScript(this.assets_path + 'theme-' + this.theme + '.js')
+                $.getScript(this.assets_path + 'ace/mode-' + this.settings.get('syntax') + '.js'),
+                $.getScript(this.assets_path + 'ace/theme-' + this.theme + '.js')
             ).done(function() {
                 /**
                  * After the scripts are loaded, we can
@@ -49,7 +49,8 @@
 
             this.editor.setOptions({
                 'highlightActiveLine': this.settings.get('highlight_active_line'),
-                'readOnly': true
+                'readOnly': true,
+                'showPrintMargin': false
             });
 
             this.editor.renderer.setOptions({

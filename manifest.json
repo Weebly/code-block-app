@@ -609,12 +609,12 @@
       "dependencies": {
         "editor": {
           "js": [
-            "assets/ace.js"
+            "assets/ace/ace.js"
           ]
         },
         "publish": {
           "js": [
-            "assets/ace.js"
+            "assets/ace/ace.js"
           ]
         }
       }
