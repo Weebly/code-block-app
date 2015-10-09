@@ -13,7 +13,7 @@
 
             /**
              * The script are not defined in the manifest 
-             * so that 6mb of scripts are not laoded. This 
+             * so that 6mb of scripts are not loaded. This 
              * allows us to load only scripts needed for 
              * each language and theme.
              */
@@ -27,6 +27,9 @@
                  */
                 this.setUpEditor();
             }.bind(this));
+
+            this.checkIfHeader();
+            this.modifyStyle();
         },
 
         /**
@@ -58,6 +61,25 @@
             this.editor.session.setOptions({
                 'wrap': this.settings.get('line_wrap'),
                 'useSoftTabs': this.settings.get('use_soft_tabs')
+            });
+        },
+
+        /**
+         * Checks settings for whether or not the header
+         * should be displayed or not.
+         */
+        checkIfHeader: function() {
+            if(this.settings.get('display_header') == "0") {
+                this.$el.find('.header').remove();
+            }
+        },
+
+        /**
+         * Minor style tweaks done on some elements
+         */
+        modifyStyle: function() {
+            this.$el.find('.ace_content').css({
+                'margin-left': '20px'
             });
         }
     });

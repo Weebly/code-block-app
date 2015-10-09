@@ -55,9 +55,8 @@
             color: @codeFontColor;
 
             .editor {
-                margin: 0 20px;
+                /*margin: 0 20px;*/
             }
         }
     }
-
 }
