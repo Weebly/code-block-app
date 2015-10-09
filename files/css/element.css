@@ -1,12 +1,12 @@
 .code-editor {
-    margin: 10px 0;
-
     &--light {
         @headerBackgroundColor: #F8F8F8;
         @backgroundColor: #FFFFFF;
         @borderColor: #C9CDCF;
         @headerFontColor: #363B3E;
         @codeFontColor: #666C70;
+        
+        padding: 20px 0px;
 
         .header();
         .body-code();
@@ -19,6 +19,8 @@
         @headerFontColor: #FFFFFF;
         @codeFontColor: #F8F8F8;
     
+        padding: 20px 0px;
+
         // Default theme background slightly different
         // than that of the editor background.
         .ace-tomorrow-night-eighties {
@@ -31,9 +33,11 @@
 
     .header() {
         .header {
-            padding: 20px;
+            padding: 10px 20px;
             font-weight: bold;
-            border: 1px solid @borderColor;
+            border-left: 1px solid @borderColor;
+            border-right: 1px solid @borderColor;
+            border-top: 1px solid @borderColor;
             background-color: @headerBackgroundColor;
             color: @headerFontColor;
 
@@ -46,16 +50,13 @@
     .body-code() {
         .body-code {
             margin: 0;
-            border-left: 1px solid @borderColor;
-            border-right: 1px solid @borderColor;
-            border-bottom: 1px solid @borderColor;
+            border: 1px solid @borderColor;
             background-color: @backgroundColor;
             color: @codeFontColor;
 
             .editor {
-                margin: 0 20px;
+                /*margin: 0 20px;*/
             }
         }
     }
-
 }
