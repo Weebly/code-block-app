@@ -45,6 +45,7 @@
             this.editor.container.style.lineHeight = '26px';
             this.editor.container.style.fontSize = '14px';
             this.editor.renderer.setScrollMargin(20, 20);
+            this.editor.renderer.setPadding(20);
 
             this.editor.setOptions({
                 'highlightActiveLine': this.settings.get('highlight_active_line'),
