@@ -62,7 +62,8 @@
 
             this.editor.session.setOptions({
                 'wrap': this.settings.get('line_wrap'),
-                'useSoftTabs': this.settings.get('use_soft_tabs')
+                'useSoftTabs': this.settings.get('use_soft_tabs'),
+                'useWorker': false // workers rebind window.require so we need to disable them
             });
 
             /**
